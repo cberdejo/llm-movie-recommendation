@@ -1,0 +1,18 @@
+[project]
+name = "populate_db"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "kagglehub>=0.3.13",
+    "numpy>=2.3.3",
+    "polars>=1.33.1",
+    "tqdm>=4.67.1",
+]
+
+
+[dependency-groups]
+dev = [
+    "ruff>=0.13.0",
+]
