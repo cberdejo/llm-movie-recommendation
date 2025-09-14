@@ -1,7 +1,7 @@
 # Populate Database
 Simple package to init a vector database.
 
-The ain script [populate_db.py](/populate_db/src/populate_db.py) should only be executed once. It formats and upserts data into database using batches.
+The main script [populate_db.py](/populate_db/src/populate_db.py) should only be executed once. It formats and upserts data into database using batches.
 
 
 ## Datasets
