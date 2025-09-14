@@ -1,0 +1,38 @@
+# Archivos y carpetas típicas de desarrollo
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.db
+*.sqlite3
+
+# Entornos virtuales
+venv/
+.env/
+.env
+
+# Archivos de control de versiones
+.git/
+.gitignore
+
+# Archivos temporales de editores
+*.swp
+*.swo
+*.bak
+*~
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de build
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Archivos relacionados con Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
