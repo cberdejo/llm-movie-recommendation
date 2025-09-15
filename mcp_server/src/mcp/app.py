@@ -56,7 +56,7 @@ def semantic_search(
         with_payload=True,
     )
 
-    # 5) Respuesta normalizada
+    # 5) normalize
     results: list[dict[str, object]] = []
     for h in hits:
         payload = h.payload or {}
