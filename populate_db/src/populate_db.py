@@ -13,7 +13,7 @@ If no CLI args are provided, it will fall back to downloading Kaggle datasets.
 """
 
 from pathlib import Path
-from typing import Iterator, Sequence, TypeVar
+from typing import Sequence
 import argparse
 import hashlib
 import ast
@@ -22,7 +22,6 @@ import re
 import numpy as np
 import polars as pl
 import kagglehub
-from uuid import uuid4  # Keep available if you prefer non-deterministic IDs.
 
 from qdrant_client.models import (
     OptimizersConfigDiff,
@@ -34,7 +33,7 @@ from qdrant_client.models import (
 from db.init_db import get_qdrant_client
 from system_helpers.embedder import get_embedding
 from system_config.entities import MediaItem
-from system_config.db_settings import dbsettings
+from system_settings.db_settings import dbsettings
 from system_config.logger import get_logger
 
 # ----------------------- Config -----------------------
@@ -43,9 +42,6 @@ log = get_logger("qdrant_populator")
 
 BATCH_SIZE = 512
 DURATION_RE = re.compile(r"(\d+)\s*min", re.IGNORECASE)
-
-T = TypeVar("T")
-
 
 # ----------------------- Utils -----------------------
 
@@ -219,7 +215,7 @@ def norm_embeddings(embeds, nrows: int) -> list[list[float]]:
     raise TypeError(f"Unsupported embeddings type: {type(embeds)}")
 
 
-def chunked(seq: Sequence[T], size: int) -> Iterator[Sequence[T]]:
+def chunked(seq, size: int):
     """
     Yield fixed-size chunks from a sequence.
 
