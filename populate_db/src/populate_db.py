@@ -16,7 +16,6 @@ from pathlib import Path
 from typing import Iterator, Sequence, TypeVar
 import argparse
 import hashlib
-import logging
 import ast
 import re
 
@@ -36,12 +35,11 @@ from db.init_db import get_qdrant_client
 from system_helpers.embedder import get_embedding
 from system_config.entities import MediaItem
 from system_config.db_settings import dbsettings
-
+from system_config.logger import get_logger
 
 # ----------------------- Config -----------------------
 
-log = logging.getLogger("qdrant_populator")
-logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+log = get_logger("qdrant_populator")
 
 BATCH_SIZE = 512
 DURATION_RE = re.compile(r"(\d+)\s*min", re.IGNORECASE)
