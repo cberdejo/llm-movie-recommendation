@@ -56,9 +56,7 @@
 
 
 ```bash
-git clone https://github.com/cberdejo/Smart-Itinerary-Generator.git
-cd Smart-Itinerary-Generator
-docker-compose up --build
+
 ```
 
 
