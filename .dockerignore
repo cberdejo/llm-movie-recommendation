@@ -1,38 +1,42 @@
-# Archivos y carpetas típicas de desarrollo
-__pycache__/
-*.pyc
+# --- Python cache / build artifacts (any depth)
+__pycache__
+*.py[cod]
 *.pyo
 *.pyd
+*.so
 *.log
-*.db
-*.sqlite3
 
-# Entornos virtuales
-venv/
-.env/
+# Build dists / metadata
+build
+dist
+*.egg-info
+.eggs
+
+# venvs (any depth)
+.venv
+venv
+
+# dotenvs (files) — incluye variantes comunes
 .env
+*.env
+*.env.*
 
-# Archivos de control de versiones
-.git/
-.gitignore
-
-# Archivos temporales de editores
+# Editors / OS
+.DS_Store
+Thumbs.db
 *.swp
 *.swo
 *.bak
 *~
 
-# Archivos del sistema operativo
-.DS_Store
-Thumbs.db
+# VCS
+.git
+.gitignore
 
-# Archivos de build
-dist/
-build/
-*.egg-info/
-.eggs/
-
-# Archivos relacionados con Docker
-Dockerfile
-docker-compose.yml
+# Docker files (si no los vas a COPY desde el contexto)
 .dockerignore
+docker-compose.yml
+
+# SQLite / local db
+*.db
+*.sqlite3
