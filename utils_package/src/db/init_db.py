@@ -1,5 +1,5 @@
 from qdrant_client import QdrantClient, models
-from system_config.db_settings import dbsettings as settings
+from system_settings.db_settings import dbsettings as settings
 
 
 def get_qdrant_client() -> QdrantClient:

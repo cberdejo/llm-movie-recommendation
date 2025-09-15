@@ -1,18 +1,18 @@
-from typing import List, Optional, Literal
+from typing import Literal
 from pydantic import BaseModel, Field
 
 
 class MediaItem(BaseModel):
     title: str = Field(..., description="Título de la obra audiovisual")
-    director: Optional[str] = Field(
+    director: str | None = Field(
         None, description="Director/a principal (si se conoce)"
     )
-    cast: List[str] = Field(
+    cast: list[str] = Field(
         default_factory=list, description="Lista de actores/actrices"
     )
-    genre: List[str] = Field(default_factory=list, description="Lista de géneros")
-    description: Optional[str] = Field(None, description="Sinopsis o descripción breve")
-    duration_min: Optional[int] = Field(
+    genre: list[str] = Field(default_factory=list, description="Lista de géneros")
+    description: str | None = Field(None, description="Sinopsis o descripción breve")
+    duration_min: int | None = Field(
         None, description="Duración en minutos, si aplica"
     )
     type: Literal["Movie", "TV Show"] = Field(..., description="Tipo de obra")
@@ -20,7 +20,7 @@ class MediaItem(BaseModel):
     class Config:
         extra = "ignore"
 
-    def duration_category(self) -> Optional[str]:
+    def duration_category(self) -> str | None:
         """Clasify movie by duration."""
         if self.duration_min is None:
             return None
