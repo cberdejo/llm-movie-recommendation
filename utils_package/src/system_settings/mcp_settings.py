@@ -13,7 +13,7 @@ class MCPSettings(BaseSettings):
         extra = "allow"
 
     @property
-    def get_mcp_uri (self) -> str:
+    def get_mcp_uri(self) -> str:
         if self.mcp_server_type == "stdio":
             return "stdio://"
         # SSE

@@ -12,9 +12,7 @@ class MediaItem(BaseModel):
     )
     genre: list[str] = Field(default_factory=list, description="Lista de géneros")
     description: str | None = Field(None, description="Sinopsis o descripción breve")
-    duration_min: int | None = Field(
-        None, description="Duración en minutos, si aplica"
-    )
+    duration_min: int | None = Field(None, description="Duración en minutos, si aplica")
     type: Literal["Movie", "TV Show"] = Field(..., description="Tipo de obra")
 
     class Config:
