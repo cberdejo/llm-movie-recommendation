@@ -1,5 +1,5 @@
 import argparse
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 from qdrant_client.models import Filter, FieldCondition, MatchValue
 from db.init_db import get_qdrant_client
@@ -8,7 +8,9 @@ from system_settings.mcp_settings import mcpsettings
 from system_helpers.embedder import get_embedding
 
 
-mcp = FastMCP(mcpsettings.get_mcp_uri())
+mcp = FastMCP(
+    name="mcp-server",
+)
 
 
 @mcp.tool()
@@ -77,9 +79,9 @@ def semantic_search(
 
 if __name__ == "__main__":
     # ensure_collection()
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--server_type", type=str, default="sse", choices=["sse", "stdio"]
+    mcp.run(
+        transport="http",
+        host=mcpsettings.mcp_host,
+        port=mcpsettings.mcp_port,
+        path="/mcp",
     )
-    args = parser.parse_args()
-    mcp.run(args.server_type)

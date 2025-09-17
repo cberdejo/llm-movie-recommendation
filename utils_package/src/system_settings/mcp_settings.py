@@ -3,7 +3,6 @@ from pydantic_settings import BaseSettings
 
 
 class MCPSettings(BaseSettings):
-    mcp_server_type: Literal["sse", "stdio"] = "sse"
     mcp_host: str = "0.0.0.0"
     mcp_port: int = 5000
 
