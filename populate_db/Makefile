@@ -3,3 +3,5 @@ prepare:
 	uv pip install -e ../utils_package
 run: 
 	uv run src/populate_db.py
+format: 
+	uv run ruff format
